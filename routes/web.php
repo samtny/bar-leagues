@@ -13,12 +13,18 @@
 
 $domain = config('domain.name', 'localhost');
 
-Route::domain('{subdomain}.' . $domain)->middleware('domain')->group(function () {
+Route::domain('{association}.' . $domain)->group(function () {
+    Route::get('admin', 'AssociationsController@admin');
     Route::get('/', 'AssociationsController@home');
 });
 
-Route::prefix('{subdomain}')->middleware('domain')->group(function () {
+Route::prefix('{association}')->group(function () {
+    Route::get('admin', 'AssociationsController@admin');
     Route::get('/', 'AssociationsController@home');
+});
+
+Route::get('/admin', function () {
+    return view('admin');
 });
 
 Route::get('/', function () {

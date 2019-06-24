@@ -10,4 +10,14 @@ class Association extends Model
     use SoftDeletes;
 
     protected $fillable = array('name', 'subdomain');
+
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'subdomain';
+    }
 }

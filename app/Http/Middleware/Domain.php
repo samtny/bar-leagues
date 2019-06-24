@@ -16,16 +16,16 @@ class Domain
      */
     public function handle($request, Closure $next)
     {
-        $subdomain = request('subdomain');
+        //$subdomain = request('subdomain');
 
-        \URL::defaults(['subdomain' => $subdomain]);
+        //\URL::defaults(['subdomain' => $subdomain]);
 
-        if (!empty($subdomain)) {
-            $association = Association::where(['subdomain' => $subdomain])->first();
+        //if (!empty($subdomain)) {
+          /*  $association = Association::where(['subdomain' => $subdomain])->first();
 
             \URL::defaults(['association' => $association]);
         }
-
+*/
         return $next($request);
     }
 }

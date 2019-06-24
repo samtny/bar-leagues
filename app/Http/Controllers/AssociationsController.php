@@ -83,7 +83,11 @@ class AssociationsController extends Controller
         //
     }
 
-    public function home() {
+    public function home(Association $association) {
         return view('association.welcome');
+    }
+
+    public function admin(Association $association) {
+        return view('association.admin');
     }
 }
