@@ -11,6 +11,20 @@
 |
 */
 
+$domain = config('domain.name', 'localhost');
+
+Route::domain('{subdomain}.' . $domain)->middleware('domain')->group(function () {
+    Route::get('/', function () {
+        return view('association.welcome');
+    });
+});
+
+Route::prefix('{subdomain}')->middleware('domain')->group(function () {
+    Route::get('/', function () {
+        return view('association.welcome');
+    });
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
